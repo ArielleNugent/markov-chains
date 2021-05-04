@@ -39,11 +39,22 @@ def make_chains(text_string):
         >>> chains[('there','juanita')]
         [None]
     """
-
+    value_list = []
     chains = {}
-
-    # your code goes here
-
+    word_list = text_string.split()
+    # loop through text_string:
+    for i in range(len(word_list)-2):
+        if chains.get((word_list[i], word_list[i+1]), 0) == 0:
+            chains[(word_list[i], word_list[i+1])] = []
+        else:
+            chains[(word_list[i], word_list[i+1])].append(word_list[i+2])
+    
+    
+    #   add word pairs to dictionary keys
+    #   add next word(value) to keys
+    for items in chains.items():
+        print(items)
+    # print(chains)
     return chains
 
 

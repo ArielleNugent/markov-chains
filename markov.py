@@ -68,11 +68,10 @@ def make_text(chains):
         words.append(key[0])
         words.append(random.choice(value))
         words.append(key[1])
-        if chains.get((words[-1], words[-2]), 0):
-            words.append(random.choice(chains.get((words[-1], words[-2]), 0)))
+        if chains.get((words[-2], words[-1]), 0):
+            words.append(random.choice(chains.get((words[-2], words[-1]), 0)))
 
     return ' '.join(words)
-
 
 input_path = 'green-eggs.txt'
 

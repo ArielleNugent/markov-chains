@@ -1,5 +1,6 @@
 """Generate Markov text from text files."""
 
+import random
 from random import choice
 
 
@@ -60,7 +61,15 @@ def make_text(chains):
 
     words = []
 
-    # your code goes here
+    #1) create a new key by indexing into the previous tuple and choosing a random word for the item list
+    #   new_key = (previous_tuple[1], random.choice(item list of previous tuple))
+    #   for loop
+    for key, value in chains.items():
+        words.append(key[0])
+        words.append(random.choice(value))
+        words.append(key[1])
+        if chains.get((words[-1], words[-2]), 0):
+            words.append(random.choice(chains.get((words[-1], words[-2]), 0)))
 
     return ' '.join(words)
 
